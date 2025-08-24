@@ -1,25 +1,10 @@
-use chrono::{NaiveDate, Utc};
 use console::style;
 use expense_manager::commands::get_tree;
-use expense_manager::transaction;
-use prost_types::Timestamp;
+// use expense_manager::transaction;
+// use prost_types::Timestamp;
 
 fn main() {
     println!("{}", style("Welcome to the budgeting tool").cyan());
-
-    let datetime_utc = Utc.from_utc_datetime(NaiveDate::from_ymd_opt(2025, 8, 22));
-
-    let mut t = transaction::Transaction {
-        name: "Rent".to_string(),
-        amount: -12.50,
-        currency: transaction::Currency::Usd as i32,
-        original_date: Some(Timestamp {
-            seconds: datetime_utc.timestamp(),
-            nanos: datetime_utc.timestamp_subsec_nanos() as i32,
-        }),
-        recurrence: None,
-    };
-    println!("{}", t.name);
 
     let root = get_tree();
     let _ = root.run();
