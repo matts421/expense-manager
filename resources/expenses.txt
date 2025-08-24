@@ -1,7 +1,0 @@
-0|10.45|burger
-1|3902.34|paycheck
-0|22.3|xfinity
-1|90000|bonus
-1|250|forma benefit
-0|10|gas
-1|0.32|helo
