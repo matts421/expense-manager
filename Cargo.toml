@@ -1,0 +1,13 @@
+[package]
+name = "expense-manager"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+console = "0.16.0"
+dialoguer = "0.11.0"
+prost = "0.14.1"
+prost-types = "0.14.1"
+
+[build-dependencies]
+prost-build = "0.14.1"
