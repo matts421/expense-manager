@@ -80,19 +80,12 @@ fn handle_touch() -> io::Result<usize> {
         .interact_text()
         .unwrap();
 
-    let transaction_type = Select::new()
-        .with_prompt("Is this a cost or profit?")
-        .items(&["cost", "profit"])
-        .default(0)
-        .interact()
-        .unwrap();
-
     let amount: f64 = Input::new()
         .with_prompt("Enter amount")
         .interact_text()
         .unwrap();
 
-    writeln!(file, "{}|{}|{}", transaction_type, amount.abs(), name)?;
+    writeln!(file, "{}|{}", amount.abs(), name)?;
 
     Ok(0)
 }

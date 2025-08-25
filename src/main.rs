@@ -1,14 +1,22 @@
 use console::style;
 use expense_manager::commands::get_tree;
-// use expense_manager::transaction;
-// use prost_types::Timestamp;
+use expense_manager::transaction::{self, Currency, Transaction};
+use prost_types::Timestamp;
 
 fn main() {
     println!("{}", style("Welcome to the budgeting tool").cyan());
+    let t = Transaction {
+        name: "Rent".to_string(),
+        amount: -12.50,
+        currency: Currency::Usd as i32,
+        original_date: None,
+        recurrence: None,
+    };
+    println!("{}", t.name);
 
     let root = get_tree();
     let _ = root.run();
-    
+
     // hello
     // let categories = vec!["Food", "Travel", "Utilities", "Other"];
     // let selection = Select::new()
