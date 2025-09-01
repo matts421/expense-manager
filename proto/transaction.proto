@@ -5,32 +5,54 @@ import "google/protobuf/timestamp.proto";
 package transaction;
 
 enum Currency {
-    INVALID_CURRENCY = 0;
-    CAD = 1;
-    USD = 2;
+  INVALID_CURRENCY = 0;
+  CAD = 1;
+  USD = 2;
+}
+
+enum Category {
+  INVALID_CATEGORY = 0;
+
+  // Cost categories
+  UTILITY = 1;
+  RENT = 2;
+  FOOD_AND_DRINK = 3;
+  GAS = 4;
+
+  // Profit categories
+  CASH = 101;
+  EQUITY = 102;
+  TAXABLE_BENEFIT = 103;
+  REIMBURSEMENT = 104;
 }
 
 enum TimeUnit {
-    INVALID_TIME_UNIT = 0;
-    DAY = 1;
-    MONTH = 2;
-    QUARTER = 3;
-    HALF = 4;
-    YEAR = 5;
+  INVALID_TIME_UNIT = 0;
+  DAY = 1;
+  MONTH = 2;
+  QUARTER = 3;
+  HALF = 4;
+  YEAR = 5;
 }
 
 message Recurrence {
-    bool is_indefinite = 1;
-    uint32 periods_remaining = 2;
+  bool is_indefinite = 1;
+  uint32 periods_remaining = 2;
 
-    uint32 interval = 3;
-    TimeUnit time_unit = 4;
+  uint32 interval = 3;
+  TimeUnit time_unit = 4;
+}
+
+message Item {
+  optional string name = 1;
+  double amount = 3;
 }
 
 message Transaction {
-    string name = 1;
-    double amount = 2;
-    Currency currency = 3;
-    google.protobuf.Timestamp original_date = 4;
-    Recurrence recurrence = 5;
+  string name = 1;
+  repeated Item items = 2;
+  Category category = 3;
+  Currency currency = 4;
+  google.protobuf.Timestamp original_date = 5;
+  Recurrence recurrence = 6;
 }
